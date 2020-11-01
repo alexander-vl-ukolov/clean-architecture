@@ -7,9 +7,9 @@ import dagger.Provides
 import javax.inject.Singleton
 
 @Module
-class DatabaseModule {
+open class DatabaseModule {
 
     @Provides
     @Singleton
-    fun appDatabase(appContext: Context) = AppDatabase.getInstance(appContext)
+    fun appDatabase(appContext: Context): AppDatabase = AppDatabase.getInstance(appContext)
 }

@@ -6,6 +6,7 @@ import com.immortalalexsan.cleanarchitecture.core.di.components.AppComponent
 import com.immortalalexsan.cleanarchitecture.core.di.modules.AppModule
 import com.immortalalexsan.cleanarchitecture.core.di.modules.CacheModule
 import com.immortalalexsan.cleanarchitecture.core.di.modules.DataDomainMapperModule
+import com.immortalalexsan.cleanarchitecture.di.modules.TestDatabaseModule
 import com.immortalalexsan.cleanarchitecture.di.modules.TestRepositoryModule
 import com.immortalalexsan.cleanarchitecture.di.modules.TestServiceApiModule
 import dagger.BindsInstance
@@ -19,6 +20,7 @@ import javax.inject.Singleton
         AndroidInjectionModule::class,
         AppModule::class,
         CacheModule::class,
+        TestDatabaseModule::class,
         TestServiceApiModule::class,
         TestRepositoryModule::class,
         DataDomainMapperModule::class
