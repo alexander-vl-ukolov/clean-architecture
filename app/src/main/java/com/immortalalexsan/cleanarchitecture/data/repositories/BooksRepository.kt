@@ -1,5 +1,6 @@
 package com.immortalalexsan.cleanarchitecture.data.repositories
 
+import androidx.room.RoomDatabase
 import com.immortalalexsan.cleanarchitecture.data.network.api.ApiService
 import com.immortalalexsan.cleanarchitecture.data.network.entities.RemoteBook
 import com.immortalalexsan.cleanarchitecture.domain.boudaries.BooksBoundary
@@ -11,6 +12,7 @@ import javax.inject.Inject
 
 open class BooksRepository @Inject constructor(
     private val apiService: ApiService,
+    private val database: RoomDatabase,
     private val mapper: Mapper<RemoteBook, EntityBook>
 ) : BooksBoundary {
 
@@ -21,8 +23,8 @@ open class BooksRepository @Inject constructor(
             .map { mapper.mapToOutput(it) }
     }
 
-    override fun getBooks(offset: Int?, limit: Int?): Single<List<EntityBook>> {
-        return apiService.getBooks(offset, limit)
+    override fun getBooks(limit: Int?, offset: Int?): Single<List<EntityBook>> {
+        return apiService.getBooks(limit, offset)
             .map { listMapper.mapToOutput(it) }
     }
 }

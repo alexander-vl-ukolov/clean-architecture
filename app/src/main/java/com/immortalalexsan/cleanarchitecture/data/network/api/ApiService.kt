@@ -11,12 +11,12 @@ interface ApiService {
     fun getBook(@Query("id") id: Long): Single<RemoteBook>
 
     /**
-     * @param offset Must be a positive integer.
      * @param limit Must be a positive integer.
+     * @param offset Must be a positive integer.
      */
     @GET("/")
     fun getBooks(
-        @Query("offset") offset: Int? = null,
-        @Query("limit") limit: Int? = null
+        @Query("limit") limit: Int? = null,
+        @Query("offset") offset: Int? = null
     ): Single<List<RemoteBook>>
 }

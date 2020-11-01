@@ -7,36 +7,33 @@ android {
     compileSdkVersion 29
 
     defaultConfig {
+        def BASE_URL = 'BASE_URL'
+        def PIN_SHA256 = 'PIN_SHA256'
+        def DB_NAME = 'DB_NAME'
+
         applicationId "com.immortalalexsan.cleanarchitecture"
         minSdkVersion 21
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
 
+        buildConfigField 'String', BASE_URL, BASE_URL_VALUE
+        buildConfigField 'String', PIN_SHA256, PIN_SHA256_VALUE
+        buildConfigField 'String', DB_NAME, DB_NAME_VALUE
+
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
-        def BASE_URL = 'BASE_URL'
-        def PIN_SHA256 = 'PIN_SHA256'
-
         debug {
             minifyEnabled false
             shrinkResources false
-
-            buildConfigField 'String', BASE_URL, BASE_URL_VALUE
-            buildConfigField 'String', PIN_SHA256, PIN_SHA256_VALUE
-
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
 
         release {
             minifyEnabled false
             shrinkResources false
-
-            buildConfigField 'String', BASE_URL, BASE_URL_VALUE
-            buildConfigField 'String', PIN_SHA256, PIN_SHA256_VALUE
-
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -79,8 +76,16 @@ dependencies {
     implementation 'io.reactivex.rxjava3:rxjava:3.0.7'
     implementation 'io.reactivex.rxjava3:rxkotlin:3.0.1'
 
+    // Room
+    kapt 'androidx.room:room-compiler:2.3.0-alpha03'
+    implementation 'androidx.room:room-runtime:2.3.0-alpha03'
+    implementation 'androidx.room:room-rxjava3:2.3.0-alpha03'
+
     // Paper
     implementation 'io.paperdb:paperdb:2.6'
+
+    // DateTime
+    implementation 'org.threeten:threetenbp:1.5.0'
 
     testImplementation 'junit:junit:4.13'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'

@@ -70,6 +70,6 @@ class ApiServiceTest {
     @Ignore("Stub")
     @Test
     fun getBooksSuccessfulTest() {
-        testBooksBoundary.getBooks(10, 1).blockingGet()
+        testBooksBoundary.getBooks(1, 10).blockingGet()
     }
 }

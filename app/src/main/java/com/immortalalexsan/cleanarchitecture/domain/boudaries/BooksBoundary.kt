@@ -7,5 +7,5 @@ interface BooksBoundary {
 
     fun getBook(id: Long): Single<EntityBook>
 
-    fun getBooks(offset: Int? = null, limit: Int? = null): Single<List<EntityBook>>
+    fun getBooks(limit: Int? = null, offset: Int? = null): Single<List<EntityBook>>
 }
